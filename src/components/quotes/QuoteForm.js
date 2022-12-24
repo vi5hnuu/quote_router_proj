@@ -1,8 +1,7 @@
-import { useRef } from 'react';
-
-import Card from '../UI/Card';
+import { Fragment, useRef } from 'react';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import classes from './QuoteForm.module.css';
+
 
 const QuoteForm = (props) => {
   const authorInputRef = useRef();
@@ -20,8 +19,9 @@ const QuoteForm = (props) => {
   }
 
   return (
-    <Card>
+    <Fragment>
       <form className={classes.form} onSubmit={submitFormHandler}>
+
         {props.isLoading && (
           <div className={classes.loading}>
             <LoadingSpinner />
@@ -40,7 +40,7 @@ const QuoteForm = (props) => {
           <button className='btn'>Add Quote</button>
         </div>
       </form>
-    </Card>
+    </Fragment>
   );
 };
 

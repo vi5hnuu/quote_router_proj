@@ -1,7 +1,12 @@
 .comments {
   text-align: center;
+  width: 60rem;
+  max-width: 90%;
 }
 
+.comments h2 {
+  text-transform: uppercase;
+}
 .comments > button {
   font-size: 1.25rem;
 }

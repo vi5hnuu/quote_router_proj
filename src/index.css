@@ -1,11 +1,25 @@
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
-
+html {
+  font-size: 62.5%;
+}
 body {
   font-family: sans-serif;
-  margin: 0;
   background-color: #e7f8f8;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #11acac;
 }
 
 .centered {
@@ -15,27 +29,28 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 .focused {
   font-size: 3rem;
   font-weight: bold;
-  color: white;
+  counter-reset: #fff;
 }
 
 .btn {
   text-decoration: none;
-  background-color: teal;
-  color: white;
+  background-color: #fac213;
+  color: #6b4312;
   border-radius: 4px;
   padding: 0.75rem 1.5rem;
-  border: 1px solid teal;
+  border: 1px solid #fac213;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 .btn:hover,
 .btn:active {
-  background-color: #11acac;
-  border-color: #11acac;
+  color: #fff;
+  background-color: #a17c0c;
+  border-color: #a17c0c;
 }
 
 .btn--flat {
