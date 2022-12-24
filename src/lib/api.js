@@ -26,7 +26,7 @@ export async function getSingleQuote(quoteId) {
   const response = await fetch(`${FIREBASE_DOMAIN}/quotes/${quoteId}.json`);
   const data = await response.json();
 
-  if (!response.ok) {
+  if (!response.ok || !data.text) {
     throw new Error(data.message || 'Could not fetch quote.');
   }
 
@@ -34,7 +34,7 @@ export async function getSingleQuote(quoteId) {
     id: quoteId,
     ...data,
   };
-
+  console.log(loadedQuote);
   return loadedQuote;
 }
 

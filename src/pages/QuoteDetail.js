@@ -1,33 +1,28 @@
-import { Fragment } from "react"
-import { Outlet, useParams } from "react-router-dom"
+import { Fragment, Suspense } from "react"
+import { Await, defer, Outlet, useLoaderData, useNavigation } from "react-router-dom"
 import HighlightedQuote from './../components/quotes/HighlightedQuote'
-import useHttp from "../hooks/use-http"
 import { getSingleQuote } from "../lib/api"
-import { useEffect } from "react"
 import LoadingSpinner from "../components/UI/LoadingSpinner"
 
 function QuoteDetail() {
-    const params = useParams()
-    const { sendRequest, status, data: loadedQuote, error } = useHttp(getSingleQuote)
+    const loaderpromise = useLoaderData()
 
-    useEffect(() => {
-        sendRequest(params.quoteId)
-    }, [sendRequest, params.quoteId])
+    return <Suspense fallback={<LoadingSpinner />}>
+        <Await resolve={loaderpromise.quote} errorElement={<p>Error loading quote.</p>}>
+            {(loadedQuote) =>
+                <Fragment>
+                    <HighlightedQuote text={loadedQuote.text} author={loadedQuote.author} />
+                    <Outlet />
+                </Fragment>
+            }
 
-    if (status === 'pending') {
-        return <div className="centered">
-            <LoadingSpinner />
-        </div>
-    }
-
-    if (error) {
-        return <p className="centered focused">{error}</p>
-    }
-
-
-    return <Fragment>
-        <HighlightedQuote text={loadedQuote.text} author={loadedQuote.author} />
-        <Outlet />
-    </Fragment>
+        </Await>
+    </Suspense>
 }
 export default QuoteDetail
+
+export async function loader({ params }) {
+    return defer({
+        quote: getSingleQuote(params.quoteId)
+    })
+}
