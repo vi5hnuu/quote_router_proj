@@ -7,10 +7,10 @@ function MainNavigation() {
         <nav className={classes.nav}>
             <ul>
                 <li>
-                    <NavLink to='/quotes' ClassName={(navData) => { return navData.isActive ? classes.active : '' }}>All Quotes</NavLink>
+                    <NavLink to='/quotes' className={(navData) => { return navData.isActive ? classes.active : '' }}>All Quotes</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/new-quote' ClassName={(navData) => { return navData.isActive ? classes.active : '' }}>Add Quote</NavLink>
+                    <NavLink to='/new-quote' className={(navData) => { return navData.isActive ? classes.active : '' }}>Add Quote</NavLink>
                 </li>
             </ul>
         </nav>

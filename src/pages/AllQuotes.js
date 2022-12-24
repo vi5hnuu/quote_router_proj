@@ -11,7 +11,7 @@ import NoQuotesFound from './../components/quotes/NoQuotesFound'
 
 
 function AllQuote() {
-    const { sendRequest, status, data: loadedQuote, error } = useHttp(getAllQuotes, true)
+    const { sendRequest, status, data: loadedQuote, error } = useHttp(getAllQuotes)
     const navigate = useNavigate()
     const location = useLocation()
 

@@ -8,7 +8,7 @@ import LoadingSpinner from "../components/UI/LoadingSpinner"
 
 function QuoteDetail() {
     const params = useParams()
-    const { sendRequest, status, data: loadedQuote, error } = useHttp(getSingleQuote, true)
+    const { sendRequest, status, data: loadedQuote, error } = useHttp(getSingleQuote)
 
     useEffect(() => {
         sendRequest(params.quoteId)
@@ -23,11 +23,6 @@ function QuoteDetail() {
     if (error) {
         return <p className="centered focused">{error}</p>
     }
-
-    if (!loadedQuote.text) {
-        return <p className="centered focused">No Quote Found</p>
-    }
-
 
 
     return <Fragment>

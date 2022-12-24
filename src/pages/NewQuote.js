@@ -6,7 +6,7 @@ import { addQuote } from '../lib/api';
 import { useEffect } from 'react';
 
 function NewQuote() {
-    const { sendRequest, status } = useHttp(addQuote)
+    const { sendRequest, status } = useHttp(addQuote, false)
     const navigate = useNavigate()
     useEffect(() => {
         if (status === 'completed') {
